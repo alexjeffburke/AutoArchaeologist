@@ -28,4 +28,4 @@ if __name__ == "__main__":
     except FileExistsError:
         pass
 
-    perform_excavation(args, Excavation=ExampleExcavation)
+    perform_excavation(args, ("excavator", ExampleExcavation))

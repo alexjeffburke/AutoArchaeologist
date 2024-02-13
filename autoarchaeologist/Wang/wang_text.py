@@ -1,5 +1,5 @@
 
-from ..base import type_case 
+from ..base import type_case
 
 class WangTypeCase(type_case.WellKnown):
 
@@ -15,8 +15,6 @@ class WangTypeCase(type_case.WellKnown):
 class WangText():
 
     def __init__(self, this):
-        if not this.has_type("Wang Wps File"):
-            return
         self.this = this
         tn = this.add_html_interpretation('WangText')
         tabs = bytes()
@@ -98,4 +96,7 @@ class WangText():
                     yield from lines[1:-1]
                 b = lines[-1]
         yield b
-                
+
+    @classmethod
+    def applicable(artifact):
+        return this.has_type("Wang Wps File")

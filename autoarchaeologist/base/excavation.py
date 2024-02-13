@@ -200,7 +200,10 @@ class Excavation():
         while self.queue:
             this = self.queue.pop(0)
             for ex in self.examiners:
-                ex(this)
+                Examiner = ex.__class__
+                is_applicable = getattr(Examiner, "applicable", lambda _: True)
+                if is_applicable(this):
+                    ex(this)
                 if this.taken:
                     break
         self.busy = False
@@ -400,3 +403,9 @@ class Excavation():
         td.s, th.s { font-size: .8em; }
         tr.stripe:nth-child(2n+1) { background-color: #ddffdd; }
     '''
+
+class CallbackExcavation(Excavation):
+    def __init__(self, callback, **kwargs):
+        super().__init__(**kwargs)
+
+        callback(self)
