@@ -389,7 +389,7 @@ class Excavation():
             font-family: "Inconsolata", "Courier New", mono-space;
         }
         td,th {
-            padding: 0 10px 0; 
+            padding: 0 10px 0;
         }
         th {
             border-bottom: 1px solid black;
